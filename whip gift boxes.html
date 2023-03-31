@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whip up gift boxes</title>
+    <style>
+        button,input{
+            font-family:Arial;
+        }
+        .headingflex{
+            display:flex;
+            flex-direction: column;
+            height: 200px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body{
+        display: flex;
+        flex-direction: column;
+        flex:1;
+        background-image: linear-gradient(160deg,#1a88cd,#eda4a3 );
+        height:600px;
+        background-repeat: no-repeat;
+        }
+        .buttonflex{
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .tb{
+ background-color: pink;
+            color: black;
+            box-shadow: 2px 2px 1px rgba(0,0,0,0.1);
+            border: none;
+            padding-top:10px;
+            padding-bottom:10px;
+            padding-left:20px;
+            padding-right:20px;
+            width: 190px;
+            border-radius: 10px;
+        }
+        .tb::placeholder{
+            color:black;
+           
+        }
+        .but{
+            background-color:#c2fa67;
+            color: black;
+            box-shadow: 2px 2px 1px rgba(0,0,0,0.1);
+            border: none;
+            padding-top:10px;
+            padding-bottom:10px;
+            padding-left:20px;
+            padding-right:20px;
+            border-radius: 10px;
+            margin-left: 50px;
+            transition: opacity 0.2s;
+
+        }
+        button:hover{
+ opacity:0.7;
+        }
+        button:active{
+            opacity:0.5;
+        }
+        .gifts{
+            display:grid;
+            grid-gap: 5px;
+            grid-auto-flow: column;
+            background-color:rgba(255,255,255,0.3);
+            height: 300px;
+            border-radius: 20px;
+            margin-left: 40px;
+            margin-right: 40px;
+            margin-bottom: 40px;
+        }
+        p{
+            margin:0;
+            margin-top:50px;
+            margin-left:50px;
+            font-family:Arial;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="headingflex">
+        <h1 id="heading" style="color:#f6e691;font-family: Arial;">WHIP UP GIFT BOXES</h1>
+    </div>
+    <div class="buttonflex">
+        <input id="textBox" class="tb" type="text" placeholder="Enter the no of gifts to generate">
+        <button id="generateButton2" class="but">Generate Boxes</button>
+        <img id="generateButton">
+    </div>
+    <p>Generated gifts</p>
+    <div id="grid" class="gifts">
+
+    </div>
+
+    <script >
+      function generateGridItems(n) {
+        const grid = [];
+        for (let i = 0; i < n; i++) {
+          grid.push(`<img style="width:100px;margin-left:10px;margin-top:10px;" src="https://www.shutterstock.com/image-photo/gift-box-260nw-124693735.jpg">`);
+        }
+        return grid.join("");
+      }
+
+      const generateButton = document.getElementById("generateButton2");
+ generateButton.addEventListener("click", function() {
+        const numberOfItemsInput = document.getElementById("textBox");
+        const numberOfItems = numberOfItemsInput.value;
+        const gridContainer = document.getElementById("grid");
+        gridContainer.innerHTML = generateGridItems(numberOfItems);
+      });
+    </script>
+
+
+</body>
